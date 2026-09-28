@@ -18,7 +18,7 @@ const postAdmin = async (req, res) => {
         if (existingAdmin) {
             return res.status(400).json({
                 success: false,
-                message: "Admin with this login already exists"
+                message: "Bu nomdagi admin allaqachon mavjud"
             });
         }
 
@@ -35,13 +35,13 @@ const postAdmin = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: 'Admin created successfully',
+            message: "Admin ma'lumotlari muvaffaqiyat kiritildi",
             data: newAdmin
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -52,13 +52,13 @@ const getAdmins = async (req, res) => {
         const admins = await Admin.find();
         return res.status(200).json({
             success: true,
-            message: 'Admins retrieved successfully',
+            message: "Admin ma'lumotlari yaratildi",
             data: admins
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -71,18 +71,18 @@ const getAdminById = async (req, res) => {
         if (!admin) {
             return res.status(404).json({
                 success: false,
-                message: 'Admin not found'
+                message: "Bu nomdagi admin topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: 'Admin retrieved successfully',
+            message: "Admin muvaffaqiyatli topildi",
             data: admin
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -115,18 +115,18 @@ const updateAdmin = async (req, res) => {
         if (!updatedAdmin) {
             return res.status(404).json({
                 success: false,
-                message: 'Admin not found'
+                message: "Bu nomdagi admin topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: 'Admin updated successfully',
+            message: "Admin yangilandi",
             data: updatedAdmin
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -139,18 +139,18 @@ const deleteAdmin = async (req, res) => {
         if (!deletedAdmin) {
             return res.status(404).json({
                 success: false,
-                message: 'Admin not found'
+                message: "Bu nomdagi admin topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: 'Admin deleted successfully',
+            message: "Admin ma'lumotlari o'chirildi",
             data: deletedAdmin
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -162,7 +162,7 @@ const searchAdmin = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Bu nomdagi admin topilmadi"
             });
         }
 
@@ -185,13 +185,13 @@ const searchAdmin = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Admins searched successfully",
+            message: "Bu nomdagi admin ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

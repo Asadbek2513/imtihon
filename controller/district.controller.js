@@ -10,7 +10,7 @@ const postDistrict = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -23,13 +23,13 @@ const postDistrict = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "District created successfully",
+            message: "Tuman ma'lumotlari muvaffaqiyatli kiritildi",
             data: newDistrict
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -42,13 +42,13 @@ const getDistricts = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Districts retrieved successfully",
+            message: "Tumanlar ro'yxati qaytarildi",
             data: districts
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -63,19 +63,19 @@ const getDistrictById = async (req, res) => {
         if (!district) {
             return res.status(404).json({
                 success: false,
-                message: "District not found"
+                message: "Bu tuman topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "District retrieved successfully",
+            message: "Tuman muvaffaqiyatli topildi",
             data: district
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -101,19 +101,19 @@ const updateDistrict = async (req, res) => {
         if (!updatedDistrict) {
             return res.status(404).json({
                 success: false,
-                message: "District not found"
+                message: "Bu tuman topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "District updated successfully",
+            message: "Tuman yangilandi",
             data: updatedDistrict
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -127,19 +127,19 @@ const deleteDistrict = async (req, res) => {
         if (!deletedDistrict) {
             return res.status(404).json({
                 success: false,
-                message: "District not found"
+                message: "Bu tuman topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "District deleted successfully",
+            message: "Tuman ma'lumotlari o'chirildi",
             data: deletedDistrict
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -151,7 +151,7 @@ const searchDistrict = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -168,13 +168,13 @@ const searchDistrict = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Districts searched successfully",
+            message: "Bu tumanlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

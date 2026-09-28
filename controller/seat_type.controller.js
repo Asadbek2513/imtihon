@@ -9,7 +9,7 @@ const postSeatType = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -20,7 +20,7 @@ const postSeatType = async (req, res) => {
         if (existingSeatType) {
             return res.status(400).json({
                 success: false,
-                message: "Bu SeatType allaqachon mavjud"
+                message: "Bu o'rindiq turi allaqachon mavjud"
             });
         }
 
@@ -32,7 +32,7 @@ const postSeatType = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message:  "SeatType created successfully",
+            message:  "O'rindiq turi ma'lumotlari muvaffaqiyatli kiritildi",
             data: SeatType
         });
     } catch (error) {
@@ -50,13 +50,13 @@ const getSeatTypes = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message:  "SeatTypes retrieved successfully",
+            message:  "O'rindiq turlari ro'yxati qaytarildi",
             data: SeatTypes
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -70,13 +70,13 @@ const getSeatTypeById = async (req, res) => {
         if ( SeatType) {
             return res.status(404).json({
                 success: false,
-                message:  "SeatType not found"
+                message:  "Bu o'rindiq turi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message:  "SeatType retrieved successfully",
+            message:  "O'rindiq turi muvaffaqiyatli topildi",
             data: SeatType
         });
     } catch (error) {
@@ -106,13 +106,13 @@ const updateSeatType = async (req, res) => {
         if (!updatedSeatType) {
             return res.status(404).json({
                 success: false,
-                message:  "SeatType not found"
+                message:  "Bu o'rindiq turi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message:  "SeatType updated successfully",
+            message:  "O'rindiq turi yangilandi",
             data: updatedSeatType
         });
     } catch (error) {
@@ -132,19 +132,19 @@ const deleteSeatType = async (req, res) => {
         if (!deletedSeatType) {
             return res.status(404).json({
                 success: false,
-                message:  "SeatType not found"
+                message:  "Bu o'rindiq turi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message:  "SeatType deleted successfully",
+            message:  "O'rindiq turi ma'lumotlari o'chirildi",
             data: deletedSeatType
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -156,7 +156,7 @@ const searchSeatType = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -173,13 +173,13 @@ const searchSeatType = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message:  "SeatTypes searched successfully",
+            message:  "Bu o'rindiq turlari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

@@ -8,7 +8,7 @@ const postVenuePhoto = async (req, res) => {
         if (!venue_id || !url) {
             return res.status(400).json({
                 success: false,
-                message: "venue_id or venueId and url are required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -20,7 +20,7 @@ const postVenuePhoto = async (req, res) => {
         if (existingVenuePhoto) {
             return res.status(400).json({
                 success: false,
-                message: "Bu venue photo allaqachon mavjud"
+                message: "Bu maskan surati allaqachon mavjud"
             });
         }
 
@@ -33,7 +33,7 @@ const postVenuePhoto = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Venue photo created successfully",
+            message: "Maskan surati ma'lumotlari muvaffaqiyatli kiritildi",
             data: newVenuePhoto
         });
     } catch (error) {
@@ -52,13 +52,13 @@ const getVenuePhotos = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Venue photos retrieved successfully",
+            message: "Maskan suratlari ro'yxati qaytarildi",
             data: venuePhotos
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -73,13 +73,13 @@ const getVenuePhotoById = async (req, res) => {
         if (!venuePhoto) {
             return res.status(404).json({
                 success: false,
-                message: "Venue photo not found"
+                message: "Bu maskan surati topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Venue photo retrieved successfully",
+            message: "Maskan surati muvaffaqiyatli topildi",
             data: venuePhoto
         });
     } catch (error) {
@@ -109,13 +109,13 @@ const updateVenuePhoto = async (req, res) => {
         if (!updatedVenuePhoto) {
             return res.status(404).json({
                 success: false,
-                message: "Venue photo not found"
+                message: "Bu maskan surati topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Venue photo updated successfully",
+            message: "Maskan surati yangilandi",
             data: updatedVenuePhoto
         });
     } catch (error) {
@@ -135,19 +135,19 @@ const deleteVenuePhoto = async (req, res) => {
         if (!deletedVenuePhoto) {
             return res.status(404).json({
                 success: false,
-                message: "Venue photo not found"
+                message: "Bu maskan surati topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Venue photo deleted successfully",
+            message: "Maskan surati ma'lumotlari o'chirildi",
             data: deletedVenuePhoto
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -159,7 +159,7 @@ const searchVenuePhoto = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -176,13 +176,13 @@ const searchVenuePhoto = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Venue photos searched successfully",
+            message: "Bu maskan suratlari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

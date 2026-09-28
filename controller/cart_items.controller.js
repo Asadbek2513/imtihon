@@ -16,7 +16,7 @@ const postCartItem = async (req, res) => {
         if (existingCartItem) {
             return res.status(400).json({
                 success: false,
-                message: ""
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -29,7 +29,7 @@ const postCartItem = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "",
+            message: "Savatcha elementi ma'lumotlari muvaffaqiyatli kiritildi",
             data: newCartItem
         });
     } catch (error) {
@@ -49,13 +49,13 @@ const getCartItems = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatcha elementlari ro'yxati qaytarildi",
             data: cartItems
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -71,13 +71,13 @@ const getCartItemById = async (req, res) => {
         if (!cartItem) {
             return res.status(404).json({
                 success: false,
-                message: ""
+                message: "Bu savatcha elementi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatcha elementi muvaffaqiyatli topildi",
             data: cartItem
         });
     } catch (error) {
@@ -109,13 +109,13 @@ const updateCartItem = async (req, res) => {
         if (!updatedCartItem) {
             return res.status(404).json({
                 success: false,
-                message: ""
+                message: "Bu savatcha elementi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatcha elementi yangilandi",
             data: updatedCartItem
         });
     } catch (error) {
@@ -135,19 +135,19 @@ const deleteCartItem = async (req, res) => {
         if (!deletedCartItem) {
             return res.status(404).json({
                 success: false,
-                message: ""
+                message: "Bu savatcha elementi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatcha elementi ma'lumotlari o'chirildi",
             data: deletedCartItem
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -159,7 +159,7 @@ const searchCartItem = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: ""
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -171,7 +171,7 @@ const searchCartItem = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Bu savatcha elementlari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {

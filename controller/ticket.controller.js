@@ -14,7 +14,7 @@ const postTicket = async (req, res) => {
         if (!event_id || !seat_id || price === undefined || price === null || service_fee === undefined || service_fee === null || !status_id || !ticket_type) {
             return res.status(400).json({
                 success: false,
-                message: "event_id, seat_id, price, service_fee, status_id, and ticket_type are required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -43,7 +43,7 @@ const postTicket = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Ticket created successfully",
+            message: "Chipta ma'lumotlari muvaffaqiyatli kiritildi",
             data: newTicket
         });
     } catch (error) {
@@ -64,13 +64,13 @@ const getTickets = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Tickets retrieved successfully",
+            message: "Chiptalar ro'yxati qaytarildi",
             data: tickets
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -87,13 +87,13 @@ const getTicketById = async (req, res) => {
         if (!ticket) {
             return res.status(404).json({
                 success: false,
-                message: "Ticket not found"
+                message: "Bu chipta topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Ticket retrieved successfully",
+            message: "Chipta muvaffaqiyatli topildi",
             data: ticket
         });
     } catch (error) {
@@ -132,12 +132,12 @@ const updateTicket = async (req, res) => {
         if (!updatedTicket) {
             return res.status(404).json({
                 success: false,
-                message: "Ticket not found"
+                message: "Bu chipta topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: "Ticket updated successfully",
+            message: "Chipta yangilandi",
             data: updatedTicket
         });
     } catch (error) {
@@ -156,18 +156,18 @@ const deleteTicket = async (req, res) => {
         if (!deletedTicket) {
             return res.status(404).json({
                 success: false,
-                message: "Ticket not found"
+                message: "Bu chipta topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: "Ticket deleted successfully",
+            message: "Chipta ma'lumotlari o'chirildi",
             data: deletedTicket
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -179,7 +179,7 @@ const searchTicket = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -198,13 +198,13 @@ const searchTicket = async (req, res) => {
             .populate('status_id');
         return res.status(200).json({
             success: true,
-            message: "Tickets searched successfully",
+            message: "Bu chiptalar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

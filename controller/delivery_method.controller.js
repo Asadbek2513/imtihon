@@ -7,7 +7,7 @@ const postDeliveryMethod = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -17,13 +17,13 @@ const postDeliveryMethod = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Delivery method created successfully",
+            message: "Yetkazib berish usuli ma'lumotlari muvaffaqiyatli kiritildi",
             data: newDeliveryMethod
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -35,13 +35,13 @@ const getDeliveryMethods = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Delivery methods retrieved successfully",
+            message: "Yetkazib berish usullari ro'yxati qaytarildi",
             data: deliveryMethods
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -55,19 +55,19 @@ const getDeliveryMethodById = async (req, res) => {
         if (!deliveryMethod) {
             return res.status(404).json({
                 success: false,
-                message: "Delivery method not found"
+                message: "Bu yetkazib berish usuli topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Delivery method retrieved successfully",
+            message: "Yetkazib berish usuli muvaffaqiyatli topildi",
             data: deliveryMethod
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -87,19 +87,19 @@ const updateDeliveryMethod = async (req, res) => {
         if (!updatedDeliveryMethod) {
             return res.status(404).json({
                 success: false,
-                message: "Delivery method not found"
+                message: "Bu yetkazib berish usuli topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Delivery method updated successfully",
+            message: "Yetkazib berish usuli yangilandi",
             data: updatedDeliveryMethod
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -112,19 +112,19 @@ const deleteDeliveryMethod = async (req, res) => {
         if (!deletedDeliveryMethod) {
             return res.status(404).json({
                 success: false,
-                message: "Delivery method not found"
+                message: "Bu yetkazib berish usuli topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Delivery method deleted successfully",
+            message: "Yetkazib berish usuli ma'lumotlari o'chirildi",
             data: deletedDeliveryMethod
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -136,7 +136,7 @@ const searchDeliveryMethod = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -153,13 +153,13 @@ const searchDeliveryMethod = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Delivery methods searched successfully",
+            message: "Bu yetkazib berish usullari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

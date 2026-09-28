@@ -18,7 +18,7 @@ const postCustomerAddress = async (req, res) => {
         if (!customer_id) {
             return res.status(400).json({
                 success: false,
-                message: "customer_id is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -39,13 +39,13 @@ const postCustomerAddress = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Customer address created successfully",
+            message: "Mijoz manzili ma'lumotlari muvaffaqiyatli kiritildi",
             data: newCustomerAddress
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -65,13 +65,13 @@ const getCustomerAddresses = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Customer addresses retrieved successfully",
+            message: "Mijoz manzillari ro'yxati qaytarildi",
             data: customerAddresses
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -93,19 +93,19 @@ const getCustomerAddressById = async (req, res) => {
         if (!customerAddress) {
             return res.status(404).json({
                 success: false,
-                message: "Customer address not found"
+                message: "Bu mijoz manzili topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Customer address retrieved successfully",
+            message: "Mijoz manzili muvaffaqiyatli topildi",
             data: customerAddress
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -147,19 +147,19 @@ const updateCustomerAddress = async (req, res) => {
         if (!updatedCustomerAddress) {
             return res.status(404).json({
                 success: false,
-                message: "Customer address not found"
+                message: "Bu mijoz manzili topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Customer address updated successfully",
+            message: "Mijoz manzili yangilandi",
             data: updatedCustomerAddress
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -173,19 +173,19 @@ const deleteCustomerAddress = async (req, res) => {
         if (!deletedCustomerAddress) {
             return res.status(404).json({
                 success: false,
-                message: 'Customer address not found'
+                message: 'Bu mijoz manzili topilmadi'
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: 'Customer address deleted successfully',
+            message: 'Mijoz manzili ma\'lumotlari o\'chirildi',
             data: deletedCustomerAddress
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: 'Ichki server xatosi',
             error: error.message
         });
     }
@@ -197,7 +197,7 @@ const searchCustomerAddress = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -233,13 +233,13 @@ const searchCustomerAddress = async (req, res) => {
             .populate('district_id');
         return res.status(200).json({
             success: true,
-            message: "Customer addresses searched successfully",
+            message: "Bu mijoz manzillari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

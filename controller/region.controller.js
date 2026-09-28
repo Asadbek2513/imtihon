@@ -9,7 +9,7 @@ const postRegion = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -20,7 +20,7 @@ const postRegion = async (req, res) => {
         if (existingRegion) {
             return res.status(400).json({
                 success: false,
-                message: "Bu region allaqachon mavjud"
+                message: "Bu hudud allaqachon mavjud"
             });
         }
 
@@ -32,7 +32,7 @@ const postRegion = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Region created successfully",
+            message: "Hudud ma'lumotlari muvaffaqiyatli kiritildi",
             data: newRegion
         });
     } catch (error) {
@@ -50,13 +50,13 @@ const getRegions = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Regions retrieved successfully",
+            message: "Hududlar ro'yxati qaytarildi",
             data: regions
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -70,13 +70,13 @@ const getRegionById = async (req, res) => {
         if (!region) {
             return res.status(404).json({
                 success: false,
-                message: "Region not found"
+                message: "Bu hudud topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Region retrieved successfully",
+            message: "Hudud muvaffaqiyatli topildi",
             data: region
         });
     } catch (error) {
@@ -106,13 +106,13 @@ const updateRegion = async (req, res) => {
         if (!updatedRegion) {
             return res.status(404).json({
                 success: false,
-                message: "Region not found"
+                message: "Bu hudud topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Region updated successfully",
+            message: "Hudud yangilandi",
             data: updatedRegion
         });
     } catch (error) {
@@ -132,19 +132,19 @@ const deleteRegion = async (req, res) => {
         if (!deletedRegion) {
             return res.status(404).json({
                 success: false,
-                message: "Region not found"
+                message: "Bu hudud topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Region deleted successfully",
+            message: "Hudud ma'lumotlari o'chirildi",
             data: deletedRegion
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -156,7 +156,7 @@ const searchRegion = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -173,13 +173,13 @@ const searchRegion = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Regions searched successfully",
+            message: "Bu hududlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

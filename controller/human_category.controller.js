@@ -12,7 +12,7 @@ const postHumanCategory = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -23,7 +23,7 @@ const postHumanCategory = async (req, res) => {
         if (existingHumanCategory) {
             return res.status(400).json({
                 success: false,
-                message: "Bu human category allaqachon mavjud"
+                message: "Bu inson toifasi allaqachon mavjud"
             });
         }
 
@@ -38,7 +38,7 @@ const postHumanCategory = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Human category created successfully",
+            message: "Inson toifasi ma'lumotlari muvaffaqiyatli kiritildi",
             data: newHumanCategory
         });
     } catch (error) {
@@ -56,13 +56,13 @@ const getHumanCategories = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Human categories retrieved successfully",
+            message: "Inson toifalari ro'yxati qaytarildi",
             data: humanCategories
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -76,13 +76,13 @@ const getHumanCategoryById = async (req, res) => {
         if (!humanCategory) {
             return res.status(404).json({
                 success: false,
-                message: "Human category not found"
+                message: "Bu inson toifasi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Human category retrieved successfully",
+            message: "Inson toifasi muvaffaqiyatli topildi",
             data: humanCategory
         });
     } catch (error) {
@@ -117,12 +117,12 @@ const updateHumanCategory = async (req, res) => {
         if (!updatedHumanCategory) {
             return res.status(404).json({
                 success: false,
-                message: "Human category not found"
+                message: "Bu inson toifasi topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: "Human category updated successfully",
+            message: "Inson toifasi yangilandi",
             data: updatedHumanCategory
         });
     } catch (error) {
@@ -141,18 +141,18 @@ const deleteHumanCategory = async (req, res) => {
         if (!deletedHumanCategory) {
             return res.status(404).json({
                 success: false,
-                message: "Human category not found"
+                message: "Bu inson toifasi topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: "Human category deleted successfully",
+            message: "Inson toifasi ma'lumotlari o'chirildi",
             data: deletedHumanCategory
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -164,7 +164,7 @@ const searchHumanCategory = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
         const result = await HumanCategory.find({
@@ -180,13 +180,13 @@ const searchHumanCategory = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Human categories searched successfully",
+            message: "Bu inson toifalari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

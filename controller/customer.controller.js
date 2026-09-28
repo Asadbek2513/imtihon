@@ -17,7 +17,7 @@ const postCustomer = async (req, res) => {
         if (!first_name) {
             return res.status(400).json({
                 success: false,
-                message: "first_name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -37,13 +37,13 @@ const postCustomer = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Customer created successfully",
+            message: "Mijoz ma'lumotlari muvaffaqiyatli kiritildi",
             data: newCustomer
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -56,13 +56,13 @@ const getCustomer = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Customers retrieved successfully",
+            message: "Mijozlar ro'yxati qaytarildi",
             data: customer
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -77,19 +77,19 @@ const getCustomerById = async (req, res) => {
         if (!customer) {
             return res.status(404).json({
                 success: false,
-                message: "Customer not found"
+                message: "Bu mijoz topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Customer retrieved successfully",
+            message: "Mijoz muvaffaqiyatli topildi",
             data: customer
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -129,19 +129,19 @@ const updateCustomer = async (req, res) => {
         if (!updatedCustomer) {
             return res.status(404).json({
                 success: false,
-                message: "Customer not found"
+                message: "Bu mijoz topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Customer updated successfully",
+            message: "Mijoz yangilandi",
             data: updatedCustomer
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -155,19 +155,19 @@ const deleteCustomer = async (req, res) => {
         if (!deletedCustomer) {
             return res.status(404).json({
                 success: false,
-                message: "Customer not found"
+                message: "Bu mijoz topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Customer deleted successfully",
+            message: "Mijoz ma'lumotlari o'chirildi",
             data: deletedCustomer
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -179,7 +179,7 @@ const searchCustomer = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -214,13 +214,13 @@ const searchCustomer = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Customers searched successfully",
+            message: "Bu mijozlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

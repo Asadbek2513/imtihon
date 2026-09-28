@@ -9,7 +9,7 @@ const postType = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -32,7 +32,7 @@ const postType = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Type created successfully",
+            message: "Tur ma'lumotlari muvaffaqiyatli kiritildi",
             data: newType
         });
     } catch (error) {
@@ -50,13 +50,13 @@ const getTypes = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Types retrieved successfully",
+            message: "Turlar ro'yxati qaytarildi",
             data: types
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -70,13 +70,13 @@ const getTypeById = async (req, res) => {
         if (!type) {
             return res.status(404).json({
                 success: false,
-                message: "Type not found"
+                message: "Bu tur topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Type retrieved successfully",
+            message: "Tur muvaffaqiyatli topildi",
             data: type
         });
     } catch (error) {
@@ -106,13 +106,13 @@ const updateType = async (req, res) => {
         if (!updatedType) {
             return res.status(404).json({
                 success: false,
-                message: "Type not found"
+                message: "Bu tur topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Type updated successfully",
+            message: "Tur yangilandi",
             data: updatedType
         });
     } catch (error) {
@@ -132,19 +132,19 @@ const deleteType = async (req, res) => {
         if (!deletedType) {
             return res.status(404).json({
                 success: false,
-                message: "Type not found"
+                message: "Bu tur topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Type deleted successfully",
+            message: "Tur ma'lumotlari o'chirildi",
             data: deletedType
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -156,7 +156,7 @@ const searchType = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -173,13 +173,13 @@ const searchType = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Types searched successfully",
+            message: "Bu turlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

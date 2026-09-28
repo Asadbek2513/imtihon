@@ -15,7 +15,7 @@ const postSeat = async (req, res) => {
         if (!sector) {
             return res.status(400).json({
                 success: false,
-                message: "sector are required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -46,7 +46,7 @@ const postSeat = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Seat created successfully",
+            message: "O'rindiq ma'lumotlari muvaffaqiyatli kiritildi",
             data: newSeat
         });
     } catch (error) {
@@ -66,13 +66,13 @@ const getSeats = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Seats retrieved successfully",
+            message: "O'rindiqlar ro'yxati qaytarildi",
             data: seats
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -88,13 +88,13 @@ const getSeatById = async (req, res) => {
         if (!seat) {
             return res.status(404).json({
                 success: false,
-                message: "Seat not found"
+                message: "Bu o'rindiq topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Seat retrieved successfully",
+            message: "O'rindiq muvaffaqiyatli topildi",
             data: seat
         });
     } catch (error) {
@@ -134,13 +134,13 @@ const updateSeat = async (req, res) => {
         if (!updatedSeat) {
             return res.status(404).json({
                 success: false,
-                message: "Seat not found"
+                message: "Bu o'rindiq topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Seat updated successfully",
+            message: "O'rindiq yangilandi",
             data: updatedSeat
         });
     } catch (error) {
@@ -160,19 +160,19 @@ const deleteSeat = async (req, res) => {
         if (!deletedSeat) {
             return res.status(404).json({
                 success: false,
-                message: "Seat not found"
+                message: "Bu o'rindiq topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Seat deleted successfully",
+            message: "O'rindiq ma'lumotlari o'chirildi",
             data: deletedSeat
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -184,7 +184,7 @@ const searchSeat = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -203,13 +203,13 @@ const searchSeat = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Seats searched successfully",
+            message: "Bu o'rindiqlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

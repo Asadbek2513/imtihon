@@ -11,7 +11,7 @@ const postVenueType = async (req, res) => {
         if (!venueId) {
             return res.status(400).json({
                 success: false,
-                message: "venueId and typeId are required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -23,7 +23,7 @@ const postVenueType = async (req, res) => {
         if (existingVenueType) {
             return res.status(400).json({
                 success: false,
-                message: "Bu venue type allaqachon mavjud"
+                message: "Bu maskan turi allaqachon mavjud"
             });
         }
 
@@ -36,7 +36,7 @@ const postVenueType = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Venue type created successfully",
+            message: "Maskan turi ma'lumotlari muvaffaqiyatli kiritildi",
             data: newVenueType
         });
     } catch (error) {
@@ -56,13 +56,13 @@ const getVenueTypes = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Venue types retrieved successfully",
+            message: "Maskan turlari ro'yxati qaytarildi",
             data: venueTypes
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -78,13 +78,13 @@ const getVenueTypeById = async (req, res) => {
         if (!venueType) {
             return res.status(404).json({
                 success: false,
-                message: "Venue type not found"
+                message: "Bu maskan turi topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Venue type retrieved successfully",
+            message: "Maskan turi muvaffaqiyatli topildi",
             data: venueType
         });
     } catch (error) {
@@ -115,12 +115,12 @@ const updateVenueType = async (req, res) => {
         if (!updatedVenueType) {
             return res.status(404).json({
                 success: false,
-                message: "Venue type not found"
+                message: "Bu maskan turi topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: "Venue type updated successfully",
+            message: "Maskan turi yangilandi",
             data: updatedVenueType
         });
     } catch (error) {
@@ -139,18 +139,18 @@ const deleteVenueType = async (req, res) => {
         if (!deletedVenueType) {
             return res.status(404).json({
                 success: false,
-                message: "Venue type not found"
+                message: "Bu maskan turi topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: "Venue type deleted successfully",
+            message: "Maskan turi ma'lumotlari o'chirildi",
             data: deletedVenueType
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -162,7 +162,7 @@ const searchVenueType = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -185,13 +185,13 @@ const searchVenueType = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Venue types searched successfully",
+            message: "Bu maskan turlari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

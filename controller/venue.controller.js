@@ -16,7 +16,7 @@ const postVenue = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name and address are required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -28,7 +28,7 @@ const postVenue = async (req, res) => {
         if (existingVenue) {
             return res.status(400).json({
                 success: false,
-                message: "Bu venue allaqachon mavjud"
+                message: "Bu maskan allaqachon mavjud"
             });
         }
 
@@ -47,7 +47,7 @@ const postVenue = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Venue created successfully",
+            message: "Maskan ma'lumotlari muvaffaqiyatli kiritildi",
             data: newVenue
         });
     } catch (error) {
@@ -67,13 +67,13 @@ const getVenues = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Venues retrieved successfully",
+            message: "Maskanlar ro'yxati qaytarildi",
             data: venues
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -89,13 +89,13 @@ const getVenueById = async (req, res) => {
         if (!venue) {
             return res.status(404).json({
                 success: false,
-                message: "Venue not found"
+                message: "Bu maskan topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Venue retrieved successfully",
+            message: "Maskan muvaffaqiyatli topildi",
             data: venue
         });
     } catch (error) {
@@ -139,13 +139,13 @@ const updateVenue = async (req, res) => {
         if (!updatedVenue) {
             return res.status(404).json({
                 success: false,
-                message: "Venue not found"
+                message: "Bu maskan topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Venue updated successfully",
+            message: "Maskan yangilandi",
             data: updatedVenue
         });
     } catch (error) {
@@ -165,19 +165,19 @@ const deleteVenue = async (req, res) => {
         if (!deletedVenue) {
             return res.status(404).json({
                 success: false,
-                message: "Venue not found"
+                message: "Bu maskan topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Venue deleted successfully",
+            message: "Maskan ma'lumotlari o'chirildi",
             data: deletedVenue
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -189,7 +189,7 @@ const searchVenue = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -220,13 +220,13 @@ const searchVenue = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Venues searched successfully",
+            message: "Bu maskanlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

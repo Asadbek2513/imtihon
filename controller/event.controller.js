@@ -20,7 +20,7 @@ const postEvent = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -43,13 +43,13 @@ const postEvent = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Event created successfully",
+            message: "Tadbir ma'lumotlari muvaffaqiyatli kiritildi",
             data: newEvent
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -65,13 +65,13 @@ const getEvents = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Events retrieved successfully",
+            message: "Tadbirlar ro'yxati qaytarildi",
             data: events
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -89,19 +89,19 @@ const getEventById = async (req, res) => {
         if (!event) {
             return res.status(404).json({
                 success: false,
-                message: "Event not found"
+                message: "Bu tadbir topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Event retrieved successfully",
+            message: "Tadbir muvaffaqiyatli topildi",
             data: event
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -147,19 +147,19 @@ const updateEvent = async (req, res) => {
         if (!updatedEvent) {
             return res.status(404).json({
                 success: false,
-                message: "Event not found"
+                message: "Bu tadbir topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Event updated successfully",
+            message: "Tadbir yangilandi",
             data: updatedEvent
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -172,18 +172,18 @@ const deleteEvent = async (req, res) => {
         if (!deletedEvent) {
             return res.status(404).json({
                 success: false,
-                message: "Event not found"
+                message: "Bu tadbir topilmadi"
             });
         }
         return res.status(200).json({
             success: true,
-            message: "Event deleted successfully",
+            message: "Tadbir ma'lumotlari o'chirildi",
             data: deletedEvent
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -195,7 +195,7 @@ const searchEvent = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
         const result = await Event.find({
@@ -220,13 +220,13 @@ const searchEvent = async (req, res) => {
             .populate('lang_id');
         return res.status(200).json({
             success: true,
-            message: "Events searched successfully",
+            message: "Bu tadbirlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

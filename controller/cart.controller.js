@@ -20,7 +20,7 @@ const postCart = async (req, res) => {
         if (existingCart) {
             return res.status(400).json({
                 success: false,
-                message: ""
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -35,7 +35,7 @@ const postCart = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "",
+            message: "Savatcha ma'lumotlari muvaffaqiyatli kiritildi",
             data: newCart
         });
     } catch (error) {
@@ -58,13 +58,13 @@ const getCart = async (req, res) => {
             );
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatchalar ro'yxati qaytarildi",
             data: cart
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -83,13 +83,13 @@ const getCartById = async (req, res) => {
         if (!cart) {
             return res.status(404).json({
                 success: false,
-                message: ""
+                message: "Bu savatcha topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatcha muvaffaqiyatli topildi",
             data: cart
         });
     } catch (error) {
@@ -125,13 +125,13 @@ const updateCart = async (req, res) => {
         if (!updatedCart) {
             return res.status(404).json({
                 success: false,
-                message: ""
+                message: "Bu savatcha topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatcha yangilandi",
             data: updatedCart
         });
     } catch (error) {
@@ -151,19 +151,19 @@ const deleteCart = async (req, res) => {
         if (!deletedCart) {
             return res.status(404).json({
                 success: false,
-                message: ""
+                message: "Bu savatcha topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Savatcha ma'lumotlari o'chirildi",
             data: deletedCart
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -175,7 +175,7 @@ const searchCart = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: ""
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -190,7 +190,7 @@ const searchCart = async (req, res) => {
             );
         return res.status(200).json({
             success: true,
-            message: "",
+            message: "Bu savatchalar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {

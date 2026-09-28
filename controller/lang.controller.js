@@ -9,7 +9,7 @@ const postLang = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -32,7 +32,7 @@ const postLang = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Language created successfully",
+            message: "Til ma'lumotlari muvaffaqiyatli kiritildi",
             data: newLang
         });
     } catch (error) {
@@ -50,13 +50,13 @@ const getLangs = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Languages retrieved successfully",
+            message: "Tillar ro'yxati qaytarildi",
             data: langs
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -70,13 +70,13 @@ const getLangById = async (req, res) => {
         if (!lang) {
             return res.status(404).json({
                 success: false,
-                message: "Language not found"
+                message: "Bu til topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Language retrieved successfully",
+            message: "Til muvaffaqiyatli topildi",
             data: lang
         });
     } catch (error) {
@@ -106,13 +106,13 @@ const updateLang = async (req, res) => {
         if (!updatedLang) {
             return res.status(404).json({
                 success: false,
-                message: "Language not found"
+                message: "Bu til topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Language updated successfully",
+            message: "Til yangilandi",
             data: updatedLang
         });
     } catch (error) {
@@ -132,19 +132,19 @@ const deleteLang = async (req, res) => {
         if (!deletedLang) {
             return res.status(404).json({
                 success: false,
-                message: "Language not found"
+                message: "Bu til topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Language deleted successfully",
+            message: "Til ma'lumotlari o'chirildi",
             data: deletedLang
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -156,7 +156,7 @@ const searchLang = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -173,13 +173,13 @@ const searchLang = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Languages searched successfully",
+            message: "Bu tillar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

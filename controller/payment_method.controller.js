@@ -9,7 +9,7 @@ const postPaymentMethod = async (req, res) => {
         if (!name) {
             return res.status(400).json({
                 success: false,
-                message: "name is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -20,7 +20,7 @@ const postPaymentMethod = async (req, res) => {
         if (existingPaymentMethod) {
             return res.status(400).json({
                 success: false,
-                message: "Bu to'lov turi allaqachon mavjud"
+                message: "Bu to'lov usuli allaqachon mavjud"
             });
         }
 
@@ -32,7 +32,7 @@ const postPaymentMethod = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Payment method created successfully",
+            message: "To'lov usuli ma'lumotlari muvaffaqiyatli kiritildi",
             data: newPaymentMethod
         });
     } catch (error) {
@@ -50,13 +50,13 @@ const getPaymentMethods = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Payment methods retrieved successfully",
+            message: "To'lov usullari ro'yxati qaytarildi",
             data: paymentMethods
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -70,13 +70,13 @@ const getPaymentMethodById = async (req, res) => {
         if (!paymentMethod) {
             return res.status(404).json({
                 success: false,
-                message: "Payment method not found"
+                message: "Bu to'lov usuli topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Payment method retrieved successfully",
+            message: "To'lov usuli muvaffaqiyatli topildi",
             data: paymentMethod
         });
     } catch (error) {
@@ -106,13 +106,13 @@ const updatePaymentMethod = async (req, res) => {
         if (!updatedPaymentMethod) {
             return res.status(404).json({
                 success: false,
-                message: "Payment method not found"
+                message: "Bu to'lov usuli topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Payment method updated successfully",
+            message: "To'lov usuli yangilandi",
             data: updatedPaymentMethod
         });
     } catch (error) {
@@ -132,19 +132,19 @@ const deletePaymentMethod = async (req, res) => {
         if (!deletedPaymentMethod) {
             return res.status(404).json({
                 success: false,
-                message: "Payment method not found"
+                message: "Bu to'lov usuli topilmadi"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Payment method deleted successfully",
+            message: "To'lov usuli ma'lumotlari o'chirildi",
             data: deletedPaymentMethod
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -156,7 +156,7 @@ const searchPaymentMethod = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -173,13 +173,13 @@ const searchPaymentMethod = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Payment methods searched successfully",
+            message: "Bu to'lov usullari ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }

@@ -27,13 +27,13 @@ const postBooking = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: "Booking created successfully",
+            message: "Bron ma'lumotlari muvaffaqiyatli kiritildi",
             data: newBooking
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
@@ -55,13 +55,13 @@ const getBookings = async (req, res) => {
             .populate('delivery_method_id');
         return res.status(200).json({
             success: true,
-            message: 'Bookings retrieved successfully',
+            message: 'Bronlar ro\'yxati qaytarildi',
             data: bookings
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: 'Ichki server xatosi',
             error: error.message
         });
     }
@@ -86,18 +86,18 @@ const getBookingById = async (req, res) => {
         if (!booking) {
             return res.status(404).json({
                 success: false,
-                message: 'Booking not found'
+                message: 'Bu bron topilmadi'
             });
         }
         return res.status(200).json({
             success: true,
-            message: 'Booking retrieved successfully',
+            message: 'Bron muvaffaqiyatli topildi',
             data: booking
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: 'Ichki server xatosi',
             error: error.message
         });
     }
@@ -132,18 +132,18 @@ const updateBooking = async (req, res) => {
         if (!updatedBooking) {
             return res.status(404).json({
                 success: false,
-                message: 'Booking not found'
+                message: 'Bu bron topilmadi'
             });
         }
         return res.status(200).json({
             success: true,
-            message: 'Booking updated successfully',
+            message: 'Bron yangilandi',
             data: updatedBooking
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: 'Ichki server xatosi',
             error: error.message
         });
     }
@@ -156,18 +156,18 @@ const deleteBooking = async (req, res) => {
         if (!deletedBooking) {
             return res.status(404).json({
                 success: false,
-                message: 'Booking not found'
+                message: 'Bu bron topilmadi'
             });
         }
         return res.status(200).json({
             success: true,
-            message: 'Booking deleted successfully',
+            message: 'Bron ma\'lumotlari o\'chirildi',
             data: deletedBooking
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: 'Internal server error',
+            message: 'Ichki server xatosi',
             error: error.message
         });
     }
@@ -179,7 +179,7 @@ const searchBooking = async (req, res) => {
         if (!query) {
             return res.status(400).json({
                 success: false,
-                message: "Search query is required"
+                message: "Kerakli ma'lumotlar to'liq kiritilmadi"
             });
         }
 
@@ -201,13 +201,13 @@ const searchBooking = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Bookings searched successfully",
+            message: "Bu bronlar ma'lumotlari topildi",
             data: result
         });
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Ichki server xatosi",
             error: error.message
         });
     }
