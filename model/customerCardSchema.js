@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const customerCardSchema = new Schema({
-    customer_id: { type: String, required: true },
+    customer_id: { type: Schema.Types.ObjectId, ref: 'Customer', required: true },
     name: { type: String, required: true },
     phone: { type: String, required: true },
     number: { type: String, required: true },

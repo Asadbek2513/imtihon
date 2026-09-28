@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const venuePhotoSchema = new Schema({
-    venue_id: { type: String, required: true },
+    venue_id: { type: Schema.Types.ObjectId, ref: 'Venue', required: true },
     url: { type: String, required: true },
 });
 

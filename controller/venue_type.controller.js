@@ -1,3 +1,4 @@
+const { Types } = require('mongoose');
 const { VenueType } = require('../model/venueTypeSchema');
 
 const postVenueType = async (req, res) => {
@@ -49,7 +50,9 @@ const postVenueType = async (req, res) => {
 
 const getVenueTypes = async (req, res) => {
     try {
-        const venueTypes = await VenueType.find();
+        const venueTypes = await VenueType.find()
+            .populate('venueId')
+            .populate('typeId');
 
         return res.status(200).json({
             success: true,
@@ -68,7 +71,9 @@ const getVenueTypes = async (req, res) => {
 const getVenueTypeById = async (req, res) => {
     try {
         const { id } = req.params;
-        const venueType = await VenueType.findById(id);
+        const venueType = await VenueType.findById(id)
+            .populate('venueId')
+            .populate('typeId');
 
         if (!venueType) {
             return res.status(404).json({
@@ -165,22 +170,11 @@ const searchVenueType = async (req, res) => {
             });
         }
 
-        const result = await VenueType.find({
-            $or: [
-                {
-                    venueId: {
-                        $regex: query,
-                        $options: "i"
-                    }
-                },
-                {
-                    typeId: {
-                        $regex: query,
-                        $options: "i"
-                    }
-                }
-            ]
-        });
+        const result = Types.ObjectId.isValid(query)
+            ? await VenueType.find({ $or: [{ venueId: query }, { typeId: query }] })
+                .populate('venueId')
+                .populate('typeId')
+            : [];
 
         return res.status(200).json({
             success: true,

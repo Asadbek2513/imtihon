@@ -61,7 +61,9 @@ const postVenue = async (req, res) => {
 
 const getVenues = async (req, res) => {
     try {
-        const venues = await Venue.find();
+        const venues = await Venue.find()
+            .populate('regionId')
+            .populate('districtId');
 
         return res.status(200).json({
             success: true,
@@ -80,7 +82,9 @@ const getVenues = async (req, res) => {
 const getVenueById = async (req, res) => {
     try {
         const { id } = req.params;
-        const venue = await Venue.findById(id);
+        const venue = await Venue.findById(id)
+            .populate('regionId')
+            .populate('districtId');
 
         if (!venue) {
             return res.status(404).json({
@@ -210,7 +214,9 @@ const searchVenue = async (req, res) => {
                     }
                 }
             ]
-        });
+        })
+            .populate('regionId')
+            .populate('districtId');
 
         return res.status(200).json({
             success: true,

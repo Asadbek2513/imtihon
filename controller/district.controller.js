@@ -37,7 +37,8 @@ const postDistrict = async (req, res) => {
 
 const getDistricts = async (req, res) => {
     try {
-        const districts = await District.find();
+        const districts = await District.find()
+            .populate('region_id');
 
         return res.status(200).json({
             success: true,
@@ -56,7 +57,8 @@ const getDistricts = async (req, res) => {
 const getDistrictById = async (req, res) => {
     try {
         const { id } = req.params;
-        const district = await District.findById(id);
+        const district = await District.findById(id)
+            .populate('region_id');
 
         if (!district) {
             return res.status(404).json({
@@ -162,7 +164,7 @@ const searchDistrict = async (req, res) => {
                     }
                 }
             ]
-        });
+        }).populate('region_id');
 
         return res.status(200).json({
             success: true,

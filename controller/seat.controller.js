@@ -1,4 +1,5 @@
 const { Seat } = require('../model/seatSchema');
+require('../model/seatTypeShema');
 
 const postSeat = async (req, res) => {
     try {
@@ -59,7 +60,9 @@ const postSeat = async (req, res) => {
 
 const getSeats = async (req, res) => {
     try {
-        const seats = await Seat.find();
+        const seats = await Seat.find()
+            .populate('venue_id')
+            .populate('seat_type_id');
 
         return res.status(200).json({
             success: true,
@@ -78,7 +81,9 @@ const getSeats = async (req, res) => {
 const getSeatById = async (req, res) => {
     try {
         const { id } = req.params;
-        const seat = await Seat.findById(id);
+        const seat = await Seat.findById(id)
+            .populate('venue_id')
+            .populate('seat_type_id');
 
         if (!seat) {
             return res.status(404).json({
@@ -192,7 +197,9 @@ const searchSeat = async (req, res) => {
                     }
                 }
             ]
-        });
+        })
+            .populate('venue_id')
+            .populate('seat_type_id');
 
         return res.status(200).json({
             success: true,

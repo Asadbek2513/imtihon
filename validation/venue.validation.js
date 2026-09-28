@@ -7,8 +7,8 @@ const venueValidation = Joi.object({
 	site: Joi.string().trim().required(),
 	phone: Joi.string().trim().required(),
 	schema: Joi.string().trim().required(),
-	regionId: Joi.string().trim().required(),
-	districtId: Joi.string().trim().required()
+	regionId: Joi.string().hex().length(24).required(),
+	districtId: Joi.string().hex().length(24).required()
 });
 
 module.exports = { venueValidation };

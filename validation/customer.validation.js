@@ -8,7 +8,7 @@ const customerValidation = Joi.object({
 	email: Joi.string().email().required(),
 	birth_date: Joi.date().required(),
 	gender: Joi.string().required(),
-	lang_id: Joi.string().trim().required(),
+	lang_id: Joi.string().hex().length(24).required(),
 	hashed_refresh_token: Joi.string().allow(null, '')
 });
 

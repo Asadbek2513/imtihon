@@ -49,7 +49,8 @@ const postCustomerCard = async (req, res) => {
 
 const getCustomerCards = async (req, res) => {
     try {
-        const customerCards = await CustomerCard.find();
+        const customerCards = await CustomerCard.find()
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' });
 
         return res.status(200).json({
             success: true,
@@ -68,7 +69,8 @@ const getCustomerCards = async (req, res) => {
 const getCustomerCardById = async (req, res) => {
     try {
         const { id } = req.params;
-        const customerCard = await CustomerCard.findById(id);
+        const customerCard = await CustomerCard.findById(id)
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' });
 
         if (!customerCard) {
             return res.status(404).json({
@@ -198,7 +200,7 @@ const searchCustomerCard = async (req, res) => {
                     }
                 }
             ]
-        });
+        }).populate({ path: 'customer_id', select: 'first_name last_name phone email' });
 
         return res.status(200).json({
             success: true,

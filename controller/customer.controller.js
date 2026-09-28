@@ -51,7 +51,8 @@ const postCustomer = async (req, res) => {
 
 const getCustomer = async (req, res) => {
     try {
-        const customer = await Customer.find();
+        const customer = await Customer.find()
+            .populate('lang_id');
 
         return res.status(200).json({
             success: true,
@@ -70,7 +71,8 @@ const getCustomer = async (req, res) => {
 const getCustomerById = async (req, res) => {
     try {
         const { id } = req.params;
-        const customer = await Customer.findById(id);
+        const customer = await Customer.findById(id)
+            .populate('lang_id');
 
         if (!customer) {
             return res.status(404).json({
@@ -208,7 +210,7 @@ const searchCustomer = async (req, res) => {
                     }
                 }
             ]
-        });
+        }).populate('lang_id');
 
         return res.status(200).json({
             success: true,

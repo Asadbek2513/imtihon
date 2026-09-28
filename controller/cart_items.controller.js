@@ -1,3 +1,4 @@
+const { Types } = require('mongoose');
 const { CartItems } = require('../model/cartItemsSchema');
 
 const postCartItem = async (req, res) => {
@@ -42,7 +43,9 @@ const postCartItem = async (req, res) => {
 
 const getCartItems = async (req, res) => {
     try {
-        const cartItems = await CartItems.find();
+        const cartItems = await CartItems.find()
+            .populate('ticket_id')
+            .populate('cart_id');
 
         return res.status(200).json({
             success: true,
@@ -61,7 +64,9 @@ const getCartItems = async (req, res) => {
 const getCartItemById = async (req, res) => {
     try {
         const { id } = req.params;
-        const cartItem = await CartItems.findById(id);
+        const cartItem = await CartItems.findById(id)
+            .populate('ticket_id')
+            .populate('cart_id');
 
         if (!cartItem) {
             return res.status(404).json({
@@ -158,22 +163,11 @@ const searchCartItem = async (req, res) => {
             });
         }
 
-        const result = await CartItems.find({
-            $or: [
-                {
-                    ticket_id: {
-                        $regex: query,
-                        $options: "i"
-                    }
-                },
-                {
-                    cart_id: {
-                        $regex: query,
-                        $options: "i"
-                    }
-                }
-            ]
-        });
+        const result = Types.ObjectId.isValid(query)
+            ? await CartItems.find({ $or: [{ ticket_id: query }, { cart_id: query }] })
+                .populate('ticket_id')
+                .populate('cart_id')
+            : [];
 
         return res.status(200).json({
             success: true,

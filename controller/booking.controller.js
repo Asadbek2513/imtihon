@@ -1,3 +1,4 @@
+const { Types } = require('mongoose');
 const { Booking } = require('../model/bookingSchema');
 
 const postBooking = async (req, res) => {
@@ -40,7 +41,10 @@ const postBooking = async (req, res) => {
 
 const getBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find();
+        const bookings = await Booking.find()
+            .populate({ path: 'card_id', select: 'customer_id name phone year month is_active is_main', populate: { path: 'customer_id', select: 'first_name last_name phone email' } })
+            .populate('payment_methood_id')
+            .populate('delivery_method_id');
         return res.status(200).json({
             success: true,
             message: 'Bookings retrieved successfully',
@@ -58,7 +62,10 @@ const getBookings = async (req, res) => {
 const getBookingById = async (req, res) => {
     try {
         const { id } = req.params;
-        const booking = await Booking.findById(id);
+        const booking = await Booking.findById(id)
+            .populate({ path: 'card_id', select: 'customer_id name phone year month is_active is_main', populate: { path: 'customer_id', select: 'first_name last_name phone email' } })
+            .populate('payment_methood_id')
+            .populate('delivery_method_id');
         if (!booking) {
             return res.status(404).json({
                 success: false,
@@ -159,16 +166,12 @@ const searchBooking = async (req, res) => {
             });
         }
 
-        const result = await Booking.find({
-            $or: [
-                {
-                    card_id: {
-                        $regex: query,
-                        $options: "i"
-                    }
-                }
-            ]
-        });
+        const result = Types.ObjectId.isValid(query)
+            ? await Booking.find({ card_id: query })
+                .populate({ path: 'card_id', select: 'customer_id name phone year month is_active is_main', populate: { path: 'customer_id', select: 'first_name last_name phone email' } })
+                .populate('payment_methood_id')
+                .populate('delivery_method_id')
+            : [];
 
         return res.status(200).json({
             success: true,

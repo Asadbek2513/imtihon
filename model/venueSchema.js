@@ -7,8 +7,8 @@ const venueSchema = new Schema({
     site: { type: String, required: true },
     phone: { type: String, required: true },
     schema: { type: String, required: true },
-    regionId: { type: String, required: true },
-    districtId: { type: String, required: true },
+    regionId: { type: Schema.Types.ObjectId, ref: 'Region', required: true },
+    districtId: { type: Schema.Types.ObjectId, ref: 'District', required: true },
 });
 
 const Venue = model('Venue', venueSchema);

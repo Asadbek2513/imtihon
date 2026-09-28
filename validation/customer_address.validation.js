@@ -1,10 +1,10 @@
 const Joi = require('joi');
 
 const customerAddressValidation = Joi.object({
-	customer_id: Joi.string().trim().required(),
+	customer_id: Joi.string().hex().length(24).required(),
 	name: Joi.string().trim().required(),
-	region_id: Joi.string().trim().required(),
-	district_id: Joi.string().trim().required(),
+	region_id: Joi.string().hex().length(24).required(),
+	district_id: Joi.string().hex().length(24).required(),
 	street: Joi.string().trim().required(),
 	house: Joi.string().trim().required(),
 	flat: Joi.string().trim().required(),

@@ -8,7 +8,7 @@ const customerSchema = new Schema({
     email: { type: String, required: true },
     birth_date: { type: Date, required: true },
     gender: { type: String, required: true },
-    lang_id: { type: String, required: true },
+    lang_id: { type: Schema.Types.ObjectId, ref: 'Lang', required: true },
     hashed_refresh_token: { type: String, default: null },
 });
 

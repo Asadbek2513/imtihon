@@ -37,7 +37,8 @@ const postEventType = async (req, res) => {
 
 const getEventTypes = async (req, res) => {
     try {
-        const eventTypes = await EventType.find();
+        const eventTypes = await EventType.find()
+            .populate('parent_event_type_id');
 
         return res.status(200).json({
             success: true,
@@ -56,7 +57,8 @@ const getEventTypes = async (req, res) => {
 const getEventTypeById = async (req, res) => {
     try {
         const { id } = req.params;
-        const eventType = await EventType.findById(id);
+        const eventType = await EventType.findById(id)
+            .populate('parent_event_type_id');
 
         if (!eventType) {
             return res.status(404).json({
@@ -162,7 +164,7 @@ const searchEventType = async (req, res) => {
                     }
                 }
             ]
-        });
+        }).populate('parent_event_type_id');
 
         return res.status(200).json({
             success: true,

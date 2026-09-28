@@ -47,7 +47,8 @@ const postVenuePhoto = async (req, res) => {
 
 const getVenuePhotos = async (req, res) => {
     try {
-        const venuePhotos = await VenuePhoto.find();
+        const venuePhotos = await VenuePhoto.find()
+            .populate('venue_id');
 
         return res.status(200).json({
             success: true,
@@ -66,7 +67,8 @@ const getVenuePhotos = async (req, res) => {
 const getVenuePhotoById = async (req, res) => {
     try {
         const { id } = req.params;
-        const venuePhoto = await VenuePhoto.findById(id);
+        const venuePhoto = await VenuePhoto.findById(id)
+            .populate('venue_id');
 
         if (!venuePhoto) {
             return res.status(404).json({
@@ -170,7 +172,7 @@ const searchVenuePhoto = async (req, res) => {
                     }
                 }
             ]
-        });
+        }).populate('venue_id');
 
         return res.status(200).json({
             success: true,

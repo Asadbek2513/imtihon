@@ -53,7 +53,10 @@ const postCustomerAddress = async (req, res) => {
 
 const getCustomerAddresses = async (req, res) => {
     try {
-        const customerAddresses = await CustomerAddress.find();
+        const customerAddresses = await CustomerAddress.find()
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' })
+            .populate('region_id')
+            .populate('district_id');
 
         return res.status(200).json({
             success: true,
@@ -72,7 +75,10 @@ const getCustomerAddresses = async (req, res) => {
 const getCustomerAddressById = async (req, res) => {
     try {
         const { id } = req.params;
-        const customerAddress = await CustomerAddress.findById(id);
+        const customerAddress = await CustomerAddress.findById(id)
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' })
+            .populate('region_id')
+            .populate('district_id');
 
         if (!customerAddress) {
             return res.status(404).json({
@@ -206,7 +212,10 @@ const searchCustomerAddress = async (req, res) => {
                     }
                 }
             ]
-        });
+        })
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' })
+            .populate('region_id')
+            .populate('district_id');
 
         return res.status(200).json({
             success: true,

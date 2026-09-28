@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const customerCardValidation = Joi.object({
-	customer_id: Joi.string().trim().required(),
+	customer_id: Joi.string().hex().length(24).required(),
 	name: Joi.string().trim().required(),
 	phone: Joi.string().trim().required(),
 	number: Joi.string().trim().required(),

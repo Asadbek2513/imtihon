@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose');
 
 const venueTypeSchema = new Schema({
-    venueId: { type: String, required: true },
-    typeId: { type: String, required: true }, 
+    venueId: { type: Schema.Types.ObjectId, ref: 'Venue', required: true },
+    typeId: { type: Schema.Types.ObjectId, ref: 'Type', required: true },
 });
 
 const VenueType = model('VenueType', venueTypeSchema);

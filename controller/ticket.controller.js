@@ -57,7 +57,10 @@ const postTicket = async (req, res) => {
 
 const getTickets = async (req, res) => {
     try {
-        const tickets = await Ticket.find();
+        const tickets = await Ticket.find()
+            .populate('event_id')
+            .populate('seat_id')
+            .populate('status_id');
 
         return res.status(200).json({
             success: true,
@@ -76,7 +79,10 @@ const getTickets = async (req, res) => {
 const getTicketById = async (req, res) => {
     try {
         const { id } = req.params;
-        const ticket = await Ticket.findById(id);
+        const ticket = await Ticket.findById(id)
+            .populate('event_id')
+            .populate('seat_id')
+            .populate('status_id');
 
         if (!ticket) {
             return res.status(404).json({
@@ -190,7 +196,10 @@ const searchTicket = async (req, res) => {
                     }
                 }
             ]
-        });
+        })
+            .populate('event_id')
+            .populate('seat_id')
+            .populate('status_id');
 
         return res.status(200).json({
             success: true,

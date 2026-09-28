@@ -57,7 +57,11 @@ const postEvent = async (req, res) => {
 
 const getEvents = async (req, res) => {
     try {
-        const events = await Event.find();
+        const events = await Event.find()
+            .populate('event_type_id')
+            .populate('human_category_id')
+            .populate('venue_id')
+            .populate('lang_id');
 
         return res.status(200).json({
             success: true,
@@ -76,7 +80,11 @@ const getEvents = async (req, res) => {
 const getEventById = async (req, res) => {
     try {
         const { id } = req.params;
-        const event = await Event.findById(id);
+        const event = await Event.findById(id)
+            .populate('event_type_id')
+            .populate('human_category_id')
+            .populate('venue_id')
+            .populate('lang_id');
 
         if (!event) {
             return res.status(404).json({
@@ -208,7 +216,11 @@ const searchEvent = async (req, res) => {
                     }
                 }
             ]
-        });
+        })
+            .populate('event_type_id')
+            .populate('human_category_id')
+            .populate('venue_id')
+            .populate('lang_id');
 
         return res.status(200).json({
             success: true,

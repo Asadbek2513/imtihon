@@ -1,3 +1,4 @@
+const { Types } = require('mongoose');
 const { Cart } = require('../model/cartSchema');
 
 const postCart = async (req, res) => {
@@ -48,7 +49,8 @@ const postCart = async (req, res) => {
 
 const getCart = async (req, res) => {
     try {
-        const cart = await Cart.find();
+        const cart = await Cart.find()
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' });
 
         return res.status(200).json({
             success: true,
@@ -67,7 +69,8 @@ const getCart = async (req, res) => {
 const getCartById = async (req, res) => {
     try {
         const { id } = req.params;
-        const cart = await Cart.findById(id);
+        const cart = await Cart.findById(id)
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' });
 
         if (!cart) {
             return res.status(404).json({
@@ -168,22 +171,10 @@ const searchCart = async (req, res) => {
             });
         }
 
-        const result = await Cart.find({
-            $or: [
-                {
-                    customer_id: {
-                        $regex: query,
-                        $options: "i"
-                    }
-                },
-                {
-                    status_id: {
-                        $regex: query,
-                        $options: "i"
-                    }
-                }
-            ]
-        });
+        const filters = [{ status_id: { $regex: query, $options: "i" } }];
+        if (Types.ObjectId.isValid(query)) filters.push({ customer_id: query });
+        const result = await Cart.find({ $or: filters })
+            .populate({ path: 'customer_id', select: 'first_name last_name phone email' });
 
         return res.status(200).json({
             success: true,
