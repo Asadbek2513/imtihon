@@ -109,7 +109,6 @@ const deleteDeliveryMethod = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedDeliveryMethod = await DeliveryMethod.findByIdAndDelete(id);
-
         if (!deletedDeliveryMethod) {
             return res.status(404).json({
                 success: false,

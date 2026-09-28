@@ -112,14 +112,12 @@ const updateVenueType = async (req, res) => {
             },
             { new: true, runValidators: true }
         );
-
         if (!updatedVenueType) {
             return res.status(404).json({
                 success: false,
                 message: "Venue type not found"
             });
         }
-
         return res.status(200).json({
             success: true,
             message: "Venue type updated successfully",
@@ -138,14 +136,12 @@ const deleteVenueType = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedVenueType = await VenueType.findByIdAndDelete(id);
-
         if (!deletedVenueType) {
             return res.status(404).json({
                 success: false,
                 message: "Venue type not found"
             });
         }
-
         return res.status(200).json({
             success: true,
             message: "Venue type deleted successfully",
@@ -171,7 +167,18 @@ const searchVenueType = async (req, res) => {
         }
 
         const result = Types.ObjectId.isValid(query)
-            ? await VenueType.find({ $or: [{ venueId: query }, { typeId: query }] })
+            ? await VenueType.find(
+                { 
+                    $or: [
+                        { 
+                            venueId: query 
+                        }, 
+                        { 
+                            typeId: query 
+                        }
+                    ] 
+                }
+            )
                 .populate('venueId')
                 .populate('typeId')
             : [];

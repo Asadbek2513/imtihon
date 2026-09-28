@@ -50,8 +50,12 @@ const postCustomerCard = async (req, res) => {
 const getCustomerCards = async (req, res) => {
     try {
         const customerCards = await CustomerCard.find()
-            .populate({ path: 'customer_id', select: 'first_name last_name phone email' });
-
+            .populate(
+                { 
+                    path: 'customer_id', 
+                    select: 'first_name last_name phone email' 
+                }
+            );
         return res.status(200).json({
             success: true,
             message: "Customer cards retrieved successfully",

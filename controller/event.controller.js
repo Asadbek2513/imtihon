@@ -169,14 +169,12 @@ const deleteEvent = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedEvent = await Event.findByIdAndDelete(id);
-
         if (!deletedEvent) {
             return res.status(404).json({
                 success: false,
                 message: "Event not found"
             });
         }
-
         return res.status(200).json({
             success: true,
             message: "Event deleted successfully",
@@ -200,7 +198,6 @@ const searchEvent = async (req, res) => {
                 message: "Search query is required"
             });
         }
-
         const result = await Event.find({
             $or: [
                 {
@@ -221,7 +218,6 @@ const searchEvent = async (req, res) => {
             .populate('human_category_id')
             .populate('venue_id')
             .populate('lang_id');
-
         return res.status(200).json({
             success: true,
             message: "Events searched successfully",

@@ -114,14 +114,12 @@ const updateHumanCategory = async (req, res) => {
             },
             { new: true, runValidators: true }
         );
-
         if (!updatedHumanCategory) {
             return res.status(404).json({
                 success: false,
                 message: "Human category not found"
             });
         }
-
         return res.status(200).json({
             success: true,
             message: "Human category updated successfully",
@@ -140,14 +138,12 @@ const deleteHumanCategory = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedHumanCategory = await HumanCategory.findByIdAndDelete(id);
-
         if (!deletedHumanCategory) {
             return res.status(404).json({
                 success: false,
                 message: "Human category not found"
             });
         }
-
         return res.status(200).json({
             success: true,
             message: "Human category deleted successfully",
@@ -171,7 +167,6 @@ const searchHumanCategory = async (req, res) => {
                 message: "Search query is required"
             });
         }
-
         const result = await HumanCategory.find({
             $or: [
                 {

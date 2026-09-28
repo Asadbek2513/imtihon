@@ -116,7 +116,7 @@ const updateTicket = async (req, res) => {
             status_id,
             ticket_type
         } = req.body;
-
+        
         const updatedTicket = await Ticket.findByIdAndUpdate(
             id,
             {
@@ -129,14 +129,12 @@ const updateTicket = async (req, res) => {
             },
             { new: true, runValidators: true }
         );
-
         if (!updatedTicket) {
             return res.status(404).json({
                 success: false,
                 message: "Ticket not found"
             });
         }
-
         return res.status(200).json({
             success: true,
             message: "Ticket updated successfully",
@@ -155,14 +153,12 @@ const deleteTicket = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedTicket = await Ticket.findByIdAndDelete(id);
-
         if (!deletedTicket) {
             return res.status(404).json({
                 success: false,
                 message: "Ticket not found"
             });
         }
-
         return res.status(200).json({
             success: true,
             message: "Ticket deleted successfully",
@@ -200,7 +196,6 @@ const searchTicket = async (req, res) => {
             .populate('event_id')
             .populate('seat_id')
             .populate('status_id');
-
         return res.status(200).json({
             success: true,
             message: "Tickets searched successfully",
